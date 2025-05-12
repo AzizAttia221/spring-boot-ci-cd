@@ -26,3 +26,16 @@ EXPOSE 8484
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+
+
+
+FROM openjdk:11-jre-slim
+
+WORKDIR /app
+
+# Assuming your JAR file is in the target directory with this pattern
+COPY target/*.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
